@@ -11,7 +11,7 @@
 
 Zu den optionalen Schritten in Kurzform:
 
-`git remote add upstream https://github.com/Lehrstuhl-BWL-EvIS/latex-starterkit-abschlussarbeiten.git` 
+`git remote add upstream https://github.com/Lehrstuhl-BWL-EvIS/latex-starterkit-qualifikationsarbeiten.git` 
 
 `git fetch upstream`
 
