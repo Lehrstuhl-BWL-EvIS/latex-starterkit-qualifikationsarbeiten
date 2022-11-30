@@ -20,7 +20,7 @@ Zu den optionalen Schritten in Kurzform:
 `git merge upstream/main`
 
 
-Ihre Verbesserungsvorschläge für das Starterkit können Sie uns gerne per "Pull Request" zur Verfügung stellen : https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+Ihre Verbesserungsvorschläge für das Starterkit können Sie uns gerne per "Pull Request" zur Verfügung stellen - folgen Sie dazu der Anleitung : https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 
 
 ### Installation durch "Download ZIP" 
