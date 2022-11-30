@@ -9,7 +9,7 @@
 
 Diese kurze Dokumentation soll Ihnen beim Umgang mit dieser Vorlage helfen. Bei Fragen oder Fehlern bitten wir Sie, sich an: \href{mailto:lehrstuhl.strecker@fernuni-hagen}{lehrstuhl.strecker@fernuni-hagen} zu wenden. Für Anregungen und Hinweise auf Fehler sind wir Ihnen dankbar.
 
-Diese Vorlage ist \emph{nicht} als funktionsfähiges Muster zu verstehen und auch nicht so intendiert: LaTeX, BibLaTeX und alle weiteren Werkzeuge bieten zahlreiche Einstellungsoptionen, die Sie an Ihre Anforderungen anpassen sollten. Gehen Sie \emph{nicht} davon aus, dass diese Vorlage für Ihre spezifischen Anforderungen Lösungsoptionen aufzeigt oder enthält. Nutzen Sie \url{https://ctan.org} und Webquellen, um sich zu informieren.
+Diese Vorlage ist \emph{nicht} als umfassend vorkonfiguriertes Muster zu verstehen und auch nicht so intendiert: LaTeX, BibLaTeX und alle weiteren Werkzeuge bieten zahlreiche Einstellungsoptionen, die Sie an Ihre Anforderungen anpassen sollten. Gehen Sie \emph{nicht} davon aus, dass diese Vorlage für Ihre spezifischen Anforderungen Lösungsoptionen aufzeigt oder enthält. Nutzen Sie \url{https://ctan.org} und Webquellen, um sich zu informieren.
 
 Diese Vorlage geht davon aus, dass Sie eine vollständige Installation von TeXLive (oder MikTeX auf Windows; allerdings nicht getestet) nutzen. Ob neuere Implementierungen wie Tectonic funktionieren, ist noch nicht getestet. TeXLive, MacTeX und MikTeX sind kostenfrei zu beziehen.
 
@@ -140,7 +140,7 @@ Für das Erstellen der Zitationen und der Bibliographie kann anstelle von Biber 
 
 
 
-\subsection{Zitate}
+\subsection{Zitationsregeln}
 
 Die Zitierweise erfolgt idealerweise nach der Variante \enquote{Fußnote mit Vollbeleg bei Erstzitat, Kurzbeleg bei Folgezitat; mit Angabe der Seitenzahl im Vollbeleg und Kurzbeleg}. Diese Variante wird u.\,a.\ im Werk von Theisen ausführlich eingeführt und in dieser Vorlage nachfolgend illustriert.\footcite[Vgl.][Kap.~7.3]{Theisen2008}
 Wir möchten Sie um die Nutzung dieses Zitationsstils bitten, da wir Ihre Abschlussarbeit auf Tablets durchsehen und auf dem Tablet mittels Stift markieren.
@@ -192,15 +192,19 @@ Eine Methode besteht aus einer sprachlichen Struktur, also Begriffen, die eine z
 
 %mit dem Befehl: \verb|\footcite[Vgl.][S.~161f.]{Fran07Konfig}|.
 
+Es ist aus unserer Sicht eines der gefährlichen akademischen \enquote{rabbit holes}, sich deutlich zu lange und zu intensiv mit Zitierstilen und Formatierungsstilen für das Literaturverzeichnis zu beschäftigen. Wir haben uns deshalb bewusst auf die Standardstile von BibLaTeX beschränkt und empfehlen Ihnen, die Suche nach alternativen BibLaTeX-Stilen, wenn überhaupt, zeitlich nur sehr eingeschränkt zu betreiben (es lassen sich inzwischen mehrere Dutzend Stile für BibLaTeX jenseits der Standarstile finden). 
 
-Weitere Hinweise: Die Angabe von \enquote{a.\,a.\,O.}\ (am angegebenen Ort) oder äquivalenter Angaben wie ebd.,\ ebenda oder ibid.\ ist \emph{nicht} zwingend erforderlich und kann mit dem BibLaTeX-Stil \verb|verbose-ibid| anstelle von \verb|verbose-trad2| ausgeschaltet werden.
+\begin{shaded}
+Beachten Sie bitte, dass wir aus diesem Grund auch \emph{keine} Formatierung der Fußnoten und der Einträge im Literaturverzeichnis vorschreiben (z.\,B.\ hinsichtlich der Angabe von Vornamen und Nachnamen und ihrer Reihenfolge).
 %
-Die Zitation mit BibLaTeX kann weiter vereinfacht werden, in dem der Parameter \verb|autocite=footnote| gesetzt wird (siehe Dokumentation zu BibLaTeX). 
+Ebenso ist die Angabe von \enquote{a.\,a.\,O.}\ (am angegebenen Ort) oder äquivalenter Angaben wie ebd.,\ ebenda oder ibid.\ \emph{nicht} zwingend erforderlich und kann mit dem BibLaTeX-Stil \verb|verbose-ibid| anstelle von \verb|verbose-trad2| ausgeschaltet werden.
+%
+%Die Zitation mit BibLaTeX kann weiter vereinfacht werden, in dem der Parameter \verb|autocite=footnote| gesetzt wird (siehe Dokumentation zu BibLaTeX). 
+\end{shaded}
 
 
-Beachten Sie die Abhängigkeiten zwischen der Erfassung der bibliografischen Informationen (in der .bib-Datei) und dem BibLaTeX-Stil: In unseren Beispielen werden Vornamen ('Manuel René') ausgeschrieben, sofern sie in der .bib-Datei ausgeschrieben sind. Einen solchen, inkonsistenten Umgang mit Vornamen sollten Sie \emph{unbedingt vermeiden}: Entweder alle Vornamen ausschreiben oder nur den/die Anfangsbuchstaben erfassen (siehe bib.bib-Datei). 
+Beachten Sie die Abhängigkeiten zwischen der Erfassung der bibliografischen Informationen (in der .bib-Datei) und dem BibLaTeX-Stil: In unseren Beispielen werden Vornamen teilweise ausgeschrieben (Manuel René), sofern sie in der .bib-Datei ausgeschrieben sind. Einen solchen, inkonsistenten Umgang mit Vornamen sollten Sie \emph{unbedingt vermeiden}: Entweder alle Vornamen ausschreiben oder nur den/die Anfangsbuchstaben erfassen (siehe bib.bib-Datei). 
 
-Warnung: Es ist aus unserer Sicht eines der gefährlichen akademischen \enquote{rabbit holes}, sich deutlich zu lange und zu intensiv mit Zitierstilen und Formatierungsstilen für das Literaturverzeichnis zu beschäftigen. Wir haben uns deshalb bewusst auf die Standardstile von BibLaTeX beschränkt und empfehlen Ihnen, die Suche nach alternativen BibLaTeX-Stilen, wenn überhaupt, zeitlich nur sehr eingeschränkt zu betreiben. 
 
 \newpage
 
