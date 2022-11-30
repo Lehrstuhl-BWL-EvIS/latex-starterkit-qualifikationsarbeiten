@@ -1,4 +1,4 @@
-# Starterkit für das Anfertigen von Qualifikationsarbeiten mit LaTeX
+# Starterkit für das Anfertigen von Qualifikationsarbeiten (Seminar- und Abschlussarbeiten) mit LaTeX
 
 ## Installation
 
