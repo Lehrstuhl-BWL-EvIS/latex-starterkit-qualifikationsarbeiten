@@ -1,0 +1,289 @@
+% !TEX root = main.tex
+% !TEX TS-program = pdflatex
+% !BIB program = biber
+
+
+\lstset{language=C}
+
+\chapter{Dokumentation}
+
+Diese kurze Dokumentation soll Ihnen beim Umgang mit dieser Vorlage helfen. Bei Fragen oder Fehlern bitten wir Sie, sich an: \href{mailto:lehrstuhl.strecker@fernuni-hagen}{lehrstuhl.strecker@fernuni-hagen} zu wenden. Für Anregungen und Hinweise auf Fehler sind wir Ihnen dankbar.
+
+Diese Vorlage ist \emph{nicht} als funktionsfähiges Muster zu verstehen und auch nicht so intendiert: LaTeX, BibLaTeX und alle weiteren Werkzeuge bieten zahlreiche Einstellungsoptionen, die Sie an Ihre Anforderungen anpassen sollten. Gehen Sie \emph{nicht} davon aus, dass diese Vorlage für Ihre spezifischen Anforderungen Lösungsoptionen aufzeigt oder enthält. Nutzen Sie \url{https://ctan.org} und Webquellen, um sich zu informieren.
+
+Diese Vorlage geht davon aus, dass Sie eine vollständige Installation von TeXLive (oder MikTeX auf Windows; allerdings nicht getestet) nutzen. Ob neuere Implementierungen wie Tectonic funktionieren, ist noch nicht getestet. TeXLive, MacTeX und MikTeX sind kostenfrei zu beziehen.
+
+Getestet wurde diese Vorlage seit 2015 jeweils unter der aktuellen MacTeX-Variante von TeXLive (zuletzt TeXLive 2022 am 29.11.2022 mit allen aktuellen Paketen, die über TeX Live Utility an diesem Tag bezogen werden konnten) mit \verb|pdflatex| (\verb|lualatex| sollte und wird nach Anpassung der Schrifteneinbindung ebenfalls funktionieren). Nachfolgend Angaben zur letzten Testversion:
+
+\begin{verbatim}
+ This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) 
+ (preloaded format=pdflatex)
+ restricted \write18 enabled.
+ entering extended mode
+ (./main.tex
+ LaTeX2e <2022-11-01>
+ L3 programming layer <2022-11-02>
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/koma-script/scrbook.cls
+ Document Class: scrbook 2022/10/12 v3.38 KOMA-Script * document class (book)
+
+\end{verbatim}
+
+
+
+
+\section{Semantische Textauszeichnung}
+\label{sec:semant-textauszeichnung}
+
+Sprachkonzepte einer Modellierungssprache (also Metakonzepte) werden nach einer gängigen Konvention in nichtproportionaler Schrift gesetzt. Die semantische Auszeichnung im Text erfolgt über den Befehl 
+
+\begin{syntax}
+\verb|\meta{text}|
+\end{syntax} 
+
+Zum Beispiel wird das Sprachkonzept \meta{ProcessType}  durch \verb|\meta{ProcessType}| ausgezeichnet.
+%Bei Bedarf kann auch der Befehl 
+%
+%\begin{syntax}
+%\verb|\fat{text}|
+%\end{syntax}
+%
+%verwendet werden, sofern dies sinnvoll erscheint: Das ist ein \fat{fett} gesetzter Text.
+Für Produktnamen und Firmen ist die Konvention gängig, Kapitälchen zu verwenden. Dazu ist der Befehl
+
+\begin{syntax}
+\verb|\product{text}|
+\end{syntax} 
+
+definiert: [\ldots] zur Berechnung mathematischer Differentialgleichungen empfiehlt sich die Nutzung von \product{Matlab} [\ldots] 
+
+\section{Fußnoten}
+\label{sec:fussnoten}
+
+Fußnoten können sehr komfortabel über den Befehl 
+
+\begin{syntax}
+\verb|\footnote{text}|
+\end{syntax} 
+
+im Fließtext eingefügt werden:
+Die Forschungsgruppe Unternehmensmodellierung\footnote{s.~\url{http://www.fernuni-hagen.de/evis/forschung/forschungsgebiete.shtml}} aus Hagen [\ldots]
+Die in der Fußnote dargestellte \meta{URL} kann über den Befehl
+
+\begin{syntax}
+	\verb|\href{URL}{Name des Links}|
+\end{syntax}
+
+in der PDF eingebettet werden.
+
+\section{Abbildungen einfügen}
+\label{sec:abbildungen}
+
+Abbildungen werden im Verzeichnis \verb|./img/| gespeichert. Mit dem Befehl \verb|\graphicspath{/img/}| werden automatisch alle Abbildungen aus diesem Verzeichnis angefordert. Eine Abbildung kann mit den folgenden befehlen eingefügt werden:
+
+\begin{syntax}
+\verb|\begin{figure}[htb]|\\
+\verb|\includegraphics[optional]{dummy.pdf}|\\
+\verb|\label{fig:name-der-abbildung}|\\
+\verb|\caption{Titel der Abbildung}|\\
+\verb|\end{figure}|
+\end{syntax}
+
+Im allgemeinen bietet es sich an, die Abbildung direkt maßstabsgetreu zu erstellen. Das oben aufgeführte Beispiel sieht in \LaTeX wie folgt aus:
+
+\begin{figure}[htb]
+	\includegraphics{img/dummy.pdf}
+	\label{fig:dummy}
+	\caption{Das ist eine dummy Abbildung}
+\end{figure}
+
+\section{Programmcode einfügen}
+\label{sec:programmcode}
+
+\lstset{language=C}
+\begin{lstlisting}[frame=single,caption=Ausschnitt C-Programmcode mit benutzerdefinierten Stil]
+	int main(void){
+	printf("Hello World");
+	getchar();
+	}
+\end{lstlisting}
+
+\begin{syntax}
+\lstset{language=TeX}	
+\begin{lstlisting}	
+
+\begin{lstlisting}[frame=single,caption=text]
+int main(void){
+printf("Hello World");
+getchar();
+}
+
+\end{lstlisting}
+
+\end{syntax}
+
+\section{Zitationen korrekt einfügen}
+\label{sec:zitationen}
+
+\subsection{Werkzeuge: BibLaTeX und biber}
+
+Wir empfehlen für das Erstellen von Zitationen und Literaturverzeichnis die Werkzeuge BibLaTeX und Biber zu nutzen.  Die Dokumentation der beiden Werkzeuge findet sich auf \url{https://ctan.org}
+
+Für das Erstellen der Zitationen und der Bibliographie kann anstelle von Biber prinzipiell auch BibTeX (in der Variante \verb|bibtex8|) verwendet werden. Das aktuelle und deutlich neuere \verb|biber| benötigt zwar etwas mehr Laufzeit; bietet allerdings einen deutlich größeren Funktionsumfang (siehe Dokumentation). 
+
+\begin{shaded}
+	Wichtig: Jede Version von BibLaTeX benötigt eine bestimmte Version von Biber. Bei der Nutzung von TeXLive sollten BibLaTeX und Biber passend zueinander installiert werden. Bisweilen \enquote{hinkt} die Version von Biber in MacTeX jedoch hinter den offiziellen Releases hinterher.  Biber kann in problematischen Fällen auch unter \url{http://biblatex-biber.sourceforge.net/} bezogen werden.
+\end{shaded}
+
+
+
+
+
+
+
+\subsection{Zitate}
+
+Die Zitierweise erfolgt idealerweise nach der Variante \enquote{Fußnote mit Vollbeleg bei Erstzitat, Kurzbeleg bei Folgezitat; mit Angabe der Seitenzahl im Vollbeleg und Kurzbeleg}. Diese Variante wird u.\,a.\ im Werk von Theisen ausführlich eingeführt und in dieser Vorlage nachfolgend illustriert.\footcite[Vgl.][Kap.~7.3]{Theisen2008}
+Wir möchten Sie um die Nutzung dieses Zitationsstils bitten, da wir Ihre Abschlussarbeit auf Tablets durchsehen und auf dem Tablet mittels Stift markieren.
+Ständige Sprünge in das Literaturverzeichnis sind mit diesem Stil nicht mehr nötig und verkürzen die Zeit für die Begutachtung Ihrer Abschlussarbeit erheblich.
+
+Ein passender Stil für BibLaTeX ist \verb|verbose-trad2| in Verbindung mit dem Zitationsbefehl \verb|\footcite|.
+%
+Mit dem Befehl \verb|\footcite[Präfix][Suffix]{citekey(s)}| können Literaturbelege komfortabel automatisch als Fußnoten mit Vollbeleg bei Erstzitat und Kurzbeleg bei Folgezitaten gesetzt werden. Halten Sie dabei  die folgenden Zitationsregeln ein:
+
+
+Zitationsregel~1: Alle Fußnoten werden beginnend mit 1 (Eins) fortlaufend über die gesamte Arbeit nummeriert (von 1 bis $n$) -- unabhängig davon, ob in der Fußnote ein Literaturbeleg erfolgt oder nicht. 
+
+
+Zitationsregel~2: (Erst-)Zitation bei \emph{wörtlichem} Zitat mit Vollbeleg und Seitenangabe -- beachten Sie die Positionierung des Fußnotenzeichens \emph{unmittelbar nach} dem Abschlusszeichen des Zitats (Anführungszeichen) und dass das Kürzel „Vgl.” für „Vergleiche” bei wörtlichen Zitaten im Vollbeleg \emph{nicht} verwendet wird:
+% (und für Fußnoten eine fortlaufende Nummerierung über die gesamte Arbeit vorgesehen ist; im Beispiel wird dagegen als Fußnotenzeichen ein 'a' anstelle einer Nummer verwendet):
+
+\begin{quote}
+ Prozessmanagement ist ein organisationales Denkmuster, das das „Denken in Prozessen”\footcite[][S.~62]{Gaitanides2007} fördert und fordert.
+\end{quote}
+
+mit dem Befehl: \verb|\footcite[][S.~62]{Gaitanides2007}|.
+
+
+
+Zitationsregel~3: (Erst-)Zitation bei \emph{indirektem} Zitat nach Satzzeichen mit Vollbeleg und Seitenangabe --~beachten Sie die Positionierung des Fußnotenzeichens \emph{nach} dem Satzabschlusszeichen (Punkt) und die Angabe von \enquote{Vgl.} zur Kennzeichnung eines indirekten Zitats:
+
+\begin{quote}
+Eine Methode besteht aus einer sprachlichen Struktur, also Begriffen, die eine zielgerichtete Beschreibung und Strukturierung des Problemgegenstands und die Konstruktion einer Problemlösung unterstützen, und einer Vorgehensweise, die Schritte zur Problemlösung vorschlägt und beschreibt.\footcite[Vgl.][S.~161f.]{Fran07Konfig}
+\end{quote}
+
+%mit dem Befehl: \verb|\footcite[Vgl.][S.~161f.]{Fran07Konfig}|.
+
+
+Zitationsregel~4 (zu Regel~2): Folgezitation mit Kurzbeleg in der Fußnote bei \emph{direktem, d.\,h.\ wörtlichem} Zitat --~beachten Sie die Positionierung des Fußnotenzeichens und das fehlende 'Vgl.':
+
+\begin{quote}
+ Prozessmanagement ist ein organisationales Denkmuster, das das „Denken in Prozessen”\footcite[][S.~62]{Gaitanides2007} fördert und fordert.
+\end{quote}
+
+%mit dem Befehl: \verb|\footcite[][S.~62]{Gaitanides2007}|.
+
+
+
+Zitationsregel~5 (zu Regel~3): Folgezitation mit Kurzbeleg in der Fußnote bei \emph{indirektem} Zitat --~beachten Sie die Positionierung des Fußnotenzeichens  und die Angabe von \enquote{Vgl.}:
+
+\begin{quote}
+Eine Methode besteht aus einer sprachlichen Struktur, also Begriffen, die eine zielgerichtete Beschreibung und Strukturierung des Problemgegenstands und die Konstruktion einer Problemlösung unterstützen, und einer Vorgehensweise, die Schritte zur Problemlösung vorschlägt und beschreibt.\footcite[Vgl.][S.~161f.]{Fran07Konfig}
+\end{quote}
+
+%mit dem Befehl: \verb|\footcite[Vgl.][S.~161f.]{Fran07Konfig}|.
+
+
+Weitere Hinweise: Die Angabe von \enquote{a.\,a.\,O.}\ (am angegebenen Ort) oder äquivalenter Angaben wie ebd.,\ ebenda oder ibid.\ ist \emph{nicht} zwingend erforderlich und kann mit dem BibLaTeX-Stil \verb|verbose-ibid| anstelle von \verb|verbose-trad2| ausgeschaltet werden.
+%
+Die Zitation mit BibLaTeX kann weiter vereinfacht werden, in dem der Parameter \verb|autocite=footnote| gesetzt wird (siehe Dokumentation zu BibLaTeX). 
+
+
+Beachten Sie die Abhängigkeiten zwischen der Erfassung der bibliografischen Informationen (in der .bib-Datei) und dem BibLaTeX-Stil: In unseren Beispielen werden Vornamen ('Manuel René') ausgeschrieben, sofern sie in der .bib-Datei ausgeschrieben sind. Einen solchen, inkonsistenten Umgang mit Vornamen sollten Sie \emph{unbedingt vermeiden}: Entweder alle Vornamen ausschreiben oder nur den/die Anfangsbuchstaben erfassen (siehe bib.bib-Datei). 
+
+Warnung: Es ist aus unserer Sicht eines der gefährlichen akademischen \enquote{rabbit holes}, sich deutlich zu lange und zu intensiv mit Zitierstilen und Formatierungsstilen für das Literaturverzeichnis zu beschäftigen. Wir haben uns deshalb bewusst auf die Standardstile von BibLaTeX beschränkt und empfehlen Ihnen, die Suche nach alternativen BibLaTeX-Stilen, wenn überhaupt, zeitlich nur sehr eingeschränkt zu betreiben. 
+
+\newpage
+
+%\begin{shaded}
+%	Beispielsweise: \parencite[S.~xx--yy]{Strecker2010}
+%\end{shaded}
+%
+%Mehrere Zitate lassen sich über den Befehl \verb|\parencites{quelleA}{quelleB}| einfügen. 
+%\verylongpage
+%\begin{shaded}
+%	Beispielsweise: \parencites{Fran07Konfig}{Fran08MML}
+%\end{shaded}
+%
+
+
+
+
+
+
+\section{Endredaktion}
+\label{sec:endredaktion}
+
+Für die Endredaktion sind folgende Befehle vorgesehen:
+
+\begin{syntax}
+\verb|\shortpage|\\
+\verb|\veryshortpage|\\
+\verb|\longpage|\\
+\verb|\verylongpage|
+\end{syntax}
+
+\section{Tabellen}
+
+Tabellen werden mit dem Paket \verb|booktabs| eingefügt. Wie im Leitfaden dargestellt, werden nur horizontale Linien verwendet.
+
+\begin{syntax}
+\verb|\begin{tabel}[position]|\\
+\verb|\centering|\\
+\verb|\caption{Beschriftung der Tabelle}|\\
+\verb|\label{tab:Name}|\\
+\verb|\begin{tabular}{lll}|\\
+\verb|\toprule|\\
+\verb|Spalte 1 & Spalte 2 & Spalte 3 |\textbackslash\textbackslash \\
+\verb|\midrule|\\
+\verb|Spalte 1, Reihe 1 & Spalte 2, Reihe 1 & Spalte 3, Reihe 1 | \textbackslash\textbackslash \\
+\verb|\bottomrule|
+\end{syntax}
+
+\begin{table}[htb]
+	\centering
+	\caption{Beschriftung der Tabelle}
+	\label{tab:label-der-tabelle}
+	\begin{tabular}{lll}
+		\toprule
+		Spalte 1 & Spalte 2 & Spalte 3 \\
+		\midrule
+		Spalte 1, Reihe 1 & Spalte 2, Reihe 1 & Spalte 3, Reihe 1 \\
+		Spalte 1, Reihe 2 & Spalte 2, Reihe 2 & Spalte 3, Reihe 2 \\
+		Spalte 1, Reihe 3 & Spalte 2, Reihe 3 & Spalte 3, Reihe 3 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\section{Probleme und Lösungen (\product{Windows})}\label{sec:probleme-und-loesungen}
+
+Bei dem Kompiliervorgang im \TeX-Editor kann es zu Fehlermeldungen kommen\footnote{Der Kompiliervorgang wird abgebrochen.}.
+Die Ursache des Problems ist auf die Benutzerrechtvergabe in Windows zurückzuführen.
+Dieses Problem ist folgendermaßen zu beheben:
+
+\begin{enumerate}
+	\item Öffnen Sie das Kommandozeilen Programm als Administrator.
+	\item Navigieren Sie mit dem Befehl \verb|cd /.| in das root Verzeichnis der \product{MiKTeX} Installation. Dieses ist standardmäßig unter \verb|../Program Files (x86)/MiKTeX 2.9/| eingerichtet.
+	\item Führen Sie jetzt den Befehl \verb|initxmf -u| aus.
+	\item Führen Sie anschließend den Befehl \verb|updmap| aus.
+\end{enumerate}
+
+Durch diese Befehlskette werden die Schriftarten der \product{MiKTeX} Installation aktualisiert. Bei der Installation auf \product{Windows} wird dies nicht automatisch durchgeführt.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main.tex"
+%%% TeX-open-quote: "\\enquote{"
+%%% TeX-close-quote: "}"
+%%% LaTeX-csquotes-open-quote: "\\enquote{"
+%%% LaTeX-csquotes-close-quote: "}"
+%%% End: 

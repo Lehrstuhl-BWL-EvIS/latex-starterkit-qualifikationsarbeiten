@@ -1,0 +1,387 @@
+% !TEX TS-program = pdflatex
+% !BIB program = biber
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% LaTeX-Vorlage für Abschlussarbeiten
+% FernUniversität in Hagen
+% Lehrstuhl Entwicklung von Informationssystemen
+% (c) 2015-2022 Stefan Strecker und Benjamin Ternes	
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Nutzungshinweise:
+
+% Diese Vorlage ist *nicht* als funktionsfähiges Muster zu verstehen und auch nicht so intendiert: LaTeX, BibLaTeX und alle weiteren Werkzeuge bieten zahlreiche Einstellungsoptionen, die Sie an Ihre Anforderungen anpassen sollten. Gehen Sie *nicht* davon aus, dass diese Vorlage für Ihre spezifischen Anforderungen Lösungsoptionen aufzeigt oder enthält. Nutzen Sie https://ctan.org und Webquellen, um sich zu informieren.
+
+% Diese Vorlage geht davon aus, dass Sie eine vollständige Installation von TeXLive (oder MikTeX auf Windows; allerdings nicht getestet) nutzen. Ob neuere Implementierungen wie Tectonic funktionieren, ist noch nicht getestet. Getestet wurde diese Vorlage seit 2015 jeweils unter der aktuellen MacTeX-Variante von TeXLive (zuletzt TeXLive 2022 am 29.11.2022 mit allen aktuellen Paketen, die über TeX Live Utility an diesem Tag bezogen werden konnten). TeXLive, MacTeX und MikTeX sind kostenfrei zu beziehen.
+
+% This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex)
+% restricted \write18 enabled.
+% entering extended mode
+% (./main.tex
+% LaTeX2e <2022-11-01>
+% L3 programming layer <2022-11-02>
+% (/usr/local/texlive/2022/texmf-dist/tex/latex/koma-script/scrbook.cls
+% Document Class: scrbook 2022/10/12 v3.38 KOMA-Script * document class (book)
+
+
+
+
+
+
+
+\documentclass[%
+draft=false,%
+paper=a4,% 
+fontsize=12pt,%
+pagesize=auto,%pdftex,%
+%twoside=true,%
+twoside=false,%
+%DIV=10,%
+%BCOR=1.0cm,%
+headings=small,openany,% 
+chapterprefix=false,% 
+version=last,%
+titlepage=true,%
+parskip=half+,%
+mpinclude=false,%
+headsepline=true,%
+%headinclude=false,%
+%footinclude=false,%
+%footlines=1.0,%
+%toc=bibliography,%
+%toc=index,%
+numbers=noendperiod%
+]{scrbook}
+
+\usepackage{scrlayer-scrpage} 
+\pagestyle{scrheadings}
+\ohead[]{\pagemark}
+\chead{}
+\ihead{\headmark}
+\ofoot[]{}
+\cfoot[]{}
+\automark[chapter]{chapter}
+\automark*[section]{}
+\renewcommand*{\chapterpagestyle}{scrheadings}
+\usepackage{tocbasic}
+
+
+\usepackage[left=2cm,right=4cm,top=2.5cm,bottom=2.5cm,includeheadfoot]{geometry}
+\linespread{1.07} 
+%
+% Textcodierung 
+%
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage[full]{textcomp}
+\usepackage{newtxtext,newtxmath,newtxtt}
+
+% Allow for all glyphs in PDFs
+\usepackage{fixltx2e}
+\usepackage[babel]{microtype}
+\usepackage{ellipsis}
+
+% Nachfolgende Befehle schließen "Schusterjungen und Hurenkinder" aus.
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+%
+% Einstellungen für deutsche Texte
+%
+\usepackage[autostyle,babel,german=guillemets,style=german]{csquotes}
+\usepackage[USenglish,ngerman]{babel} 
+\selectlanguage{ngerman}
+
+%
+% Schriftstile einstellen
+%
+\setkomafont{sectioning}{\rmfamily\bfseries}
+\setkomafont{title}{\normalfont\rmfamily}
+\setkomafont{descriptionlabel}{\rmfamily}
+\setkomafont{caption}{\small\itshape} 
+\setkomafont{pageheadfoot}{\normalfont\normalcolor\footnotesize}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+%
+% Zitieren und Literaturverzeichnis mit biblatex
+% Hinweis: UTF8 verlangt nach biber statt bibtex8
+% 
+\usepackage[%
+ backend=biber,%
+ style=verbose-trad2,%
+ natbib=false,%
+ sorting=anyt,%
+ sortcites=true,%
+% ibidtracker=strict,%
+ hyperref=auto,%
+ maxnames=10,%
+ minnames=1,%
+ citepages=suppress,%
+ dashed=false%
+]{biblatex}
+
+\bibliography{bib}
+
+\setlength{\bibitemsep}{1em}
+\DefineBibliographyStrings{ngerman}{andothers = {u.\,a.},}
+
+%
+% Programmcode
+%
+\usepackage{listings}
+
+\lstdefinestyle{customc}{
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	frame=L,
+	xleftmargin=\parindent,
+	language=C,
+	showstringspaces=false,
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+}
+% 
+% PDF Erstellung steuern und Links aktivieren
+% 
+\usepackage{pdfpages}
+\usepackage{hyperref} 
+\urlstyle{rm}
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0,0,.5}
+\hypersetup{%
+%  pdftitle={Author, Titel},%
+   pdfauthor={Author},%
+   pdfstartview=FitH,%
+   pdfpagelayout=OneColumn,%
+   naturalnames=true,%
+   colorlinks=true,%
+   breaklinks=true,%
+   linkcolor=blue,%
+   citecolor=black,%
+   filecolor=black,%
+   urlcolor=black}
+   
+%
+% Semantische Textauszeichnung
+%
+\newcommand{\meta}[1]{\texttt{#1}}
+\newcommand{\fat}[1]{\textbf{#1}} 
+\newcommand{\product}[1]{\textsc{#1}} 
+
+%
+% Figures and graphics
+% 
+\usepackage{graphicx}
+\graphicspath{/img}
+%\usepackage{longtable}
+\usepackage{booktabs}
+%\usepackage{tabularx}
+%\usepackage{paralist}
+
+% 
+% helpful packages
+%
+\usepackage{enumerate}
+\usepackage{varioref}
+
+% 
+% Pakete für Endredaktion
+% 
+% \newcommand{\PreserveBackslash}[1]{\let \temp = \\ #1 \let\\=\temp}
+% \let\RdB=\PreserveBackslash
+% \newcommand{\blankpage}{%
+% \clearpage{\pagestyle{empty}\cleardoublepage}
+% }
+% \newcommand{\longpage}{\enlargethispage{\baselineskip}}
+\newcommand{\verylongpage}{\enlargethispage{2\baselineskip}}
+% \newcommand{\shortpage}{\enlargethispage{-\baselineskip}}
+% \newcommand{\veryshortpage}{\enlargethispage{-2\baselineskip}}
+%
+% Packages for debugging and editing / not for final version
+% 
+% \usepackage[pagewise]{lineno}
+% \linenumbers
+\usepackage{blindtext}
+% \usepackage{color,soul}
+% \usepackage[normalem]{ulem}
+% \newcommand{\gelb}[1]{\texthl{#1}\@\xspace}
+% \newcommand{\note}[1]{\texthl{Note: #1}\@\xspace}
+% \newcommand{\dt}[1]{\foreignlanguage{ngerman}{#1}}
+% \newcommand{\en}[1]{\foreignlanguage{english}{#1}}
+
+\usepackage[ngerman=ngerman-x-latest]{hyphsubst}
+\hyphenation{%
+Wirt-schafts-in-for-ma-tik
+Ge-schäfts-pro-zess-mo-dell
+Ge-schäfts-prozess-modell-ier-ung
+}
+
+%
+% Useful abbreviations
+%
+\usepackage{xspace} 
+\newcommand{\msc}{M.\,Sc.\@\xspace}
+\newcommand{\MSc}{M.\,Sc.\@\xspace}
+\newcommand{\bsc}{B.\,Sc.\@\xspace}
+\newcommand{\BSc}{B.\,Sc.\@\xspace}
+\newcommand{\dH}{d.\,h.\@\xspace}
+
+\newenvironment{myquote}{\begin{quote} \small}{\end{quote}}
+
+\renewcommand\uppertitleback[1]{\thispagestyle{empty}#1\vfill}
+\renewcommand\lowertitleback[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{color}
+%\usepackage{framed}
+\definecolor{shadecolor}{gray}{.70}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{xcolor}
+
+\definecolor{light-gray}{gray}{0.85}
+
+\newmdenv[%
+backgroundcolor=light-gray,
+linecolor=light-gray,
+%outerlinewidth=2pt,
+%roundcorner=2mm,
+skipabove=1\baselineskip,
+skipbelow=1\baselineskip,
+]{shaded}
+
+\newmdenv[%
+%backgroundcolor=light-gray,
+linecolor=black,
+outerlinewidth=1pt,
+%roundcorner=2mm,
+skipabove=1\baselineskip,
+skipbelow=1\baselineskip,
+]{syntax}
+
+\begin{document}
+
+% Titelseite
+\frontmatter
+
+\begin{titlepage}
+\thispagestyle{empty}
+
+\begin{center}
+	\noindent\Huge FernUniversität in Hagen
+	
+	\bigskip
+	
+	\noindent\huge Fakultät für Wirtschaftswissenschaft
+	
+	\bigskip
+	
+	\noindent\normalsize Lehrstuhl für Betriebswirtschaftslehre,\\
+	\noindent\normalsize insb.\ Entwicklung von Informationssystemen
+	
+	\vspace{3cm}
+	
+	\noindent\normalsize <Seminar-, Bachelor-, Masterarbeit>
+	
+	\smallskip
+	
+	\noindent\normalsize im Studiengang
+	
+	\smallskip
+	
+	\noindent\normalsize <Wirtschaftsinformatik (\BSc/\MSc), Wirtschaftswissenschaft (\BSc/\MSc)>
+	
+	\smallskip
+	
+	\noindent\normalsize zum Thema
+	
+	\bigskip
+		
+	\begin{shaded}
+		\centering <Thema der wissenschaftlichen Arbeit>
+	\end{shaded}	
+	
+	\vspace{2cm}
+\end{center}
+
+	\begin{tabular}{ll}
+		Seminar:	&	<Seminartitel> \\
+		Leitung:	&	Univ.-Prof.\ Dr.\ rer.\ pol.\ habil.\ Stefan~Strecker \\
+		Betreuung:  &	<Akad.\ Grad><Name der Betreuerin bzw.\ des Betreuers>\\
+		Name:		&	<Nachname>, <Vorname>\\
+		Anschrift:	&	<Straße und Hausnummer, PLZ und Ort>\\
+		Telefon:	&	<Telefonnummer>\\
+		E-Mail:		&	\href{mailto:meine@email-adresse.de}{meine@email-adresse.de}\\
+		Matr.-Nr.:	& 	<Matrikelnummer>\\
+		Studiengang	&	<Ihr Studiengang z.\ B.\ \BSc Wirtschaftsinformatik Vollzeit>\\
+		Semesterbegin:	&	<TT>.<MM>.<JJJJ> \\
+		Abgabgedatum:	&	<TT>.<MM>.<JJJJ> \\
+		Anz.\ d.\ Worte:	&	X.XXX (manuell zählen)\\	
+	\end{tabular}
+	
+
+
+\end{titlepage}
+
+\clearplainofpairofpagestyles
+\pagestyle{scrheadings}
+\renewcommand*{\chapterpagestyle}{scrheadings}
+\pagenumbering{roman}
+\normalsize
+\cleardoublepage
+
+%\include{vorwort}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\tableofcontents
+\listoffigures
+\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Setup für Fußnoten
+\setlength{\skip\footins}{2em}		% Fußnoten um 3em nach unten versetzt
+%\counterwithout{footnote}{chapter}	% Fußnoten werden durchgehend nummeriert
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mainmatter
+\include{chapter1}
+%\include{chapter2}
+%\include{chapter3}
+%\include{chapter4}
+%\include{chapter5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\nocite{*}
+\printbibliography[heading=bibliography]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+\chapter{Anhang}
+
+%\includepdf{appendix/anlage3_neu2.pdf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% TeX-open-quote: "\\enquote{"
+%%% TeX-close-quote: "}"
+%%% LaTeX-csquotes-open-quote: "\\enquote{{"
+%%% LaTeX-csquotes-close-quote: "}"
+%%% End: 
