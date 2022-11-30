@@ -1,4 +1,5 @@
-# Starterkit für das Anfertigen von Qualifikationsarbeiten (Seminar- und Abschlussarbeiten) mit LaTeX
+# Starterkit 
+für das Anfertigen von Qualifikationsarbeiten (Seminar- und Abschlussarbeiten) mit LaTeX am Lehrstuhl EvIS
 
 ## Installation
 
